@@ -1,7 +1,9 @@
 // Type definitions for ftp 0.3.8
 // Project: https://github.com/mscdex/node-ftp
 // Definitions by: Rogier Schouten <https://github.com/rogierschouten>
+//                 Rolands Jegorovs <https://github.com/Rolandisimo>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
+// TypeScript Version: 2.4
 
 /// <reference types="node" />
 
@@ -55,6 +57,13 @@ declare namespace Client {
         keepalive?: number;
     }
 
+    // Enum for ListingElement["type"]
+    export enum ListingType {
+      Directory = "d",
+      File = "-",
+      Symlink = "l",
+    }
+
     /**
      * Element returned by Client#list()
      */
@@ -62,7 +71,7 @@ declare namespace Client {
         /**
          * A single character denoting the entry type: 'd' for directory, '-' for file (or 'l' for symlink on **\*NIX only**).
          */
-        "type": string;
+        "type": ListingType;
         /**
          * The name of the entry
          */
